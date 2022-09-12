@@ -5,13 +5,14 @@ import datetime
 import time
 import json
 import pandas as pd
-
-ServiceKey = 'Ody77GLuYeR%2FeFqbpduMN2Bi4Cka2fztbgnj6E2Eux1kUhy3e4epR28XKBUaObiqPoVzAizxXMBPXtMyuC9v9Q%3D%3D'
+# Ody77GLuYeR%2FeFqbpduMN2Bi4Cka2fztbgnj6E2Eux1kUhy3e4epR28XKBUaObiqPoVzAizxXMBPXtMyuC9v9Q%3D%3D\"
+ServiceKey = '018KdYCdw55kwIltH5ENhxwCVpHSbdDB%2BshAgG5vs35TJPGtgMUmVFomPvBYPqOxW2sCxulXlF9tfOjjR5Ua8A%3D%3D'
 
 
 # [CODE 1]
 def getRequestUrl(url):
 	req = urllib.request.Request(url)
+	
 	try:
 		response = urllib.request.urlopen(req)
 		if response.getcode() == 200:
@@ -19,13 +20,13 @@ def getRequestUrl(url):
 			return response.read().decode('utf-8')
 	except Exception as e:
 		print(e)
-		print("[%s] Error for URL : %s" % (datetime.datetime.now(), url))
+		print("[%s]\nError for URL:\n%s" % (datetime.datetime.now(), url))
 		return None
 
 
 # [CODE 2]
 def getTourismStatsItem(yyyymm, national_code, ed_cd):
-	service_url = 'http://openapi.tour.go.kr/openapi/service/EdrcntTourismStatsServicee/getEdrcntTourismStatsList'
+	service_url = 'http://openapi.tour.go.kr/openapi/service/EdrcntTourismStatsService/getEdrcntTourismStatsList'
 	parameters = "?_type=json&serviceKey=" + ServiceKey  # 인증키
 	parameters += "&YM=" + yyyymm
 	parameters += "&NAT_CD=" + national_code
@@ -34,6 +35,7 @@ def getTourismStatsItem(yyyymm, national_code, ed_cd):
 	
 	print(url)
 	retData = getRequestUrl(url)  # [CODE 1]
+	
 	
 	if retData is None:
 		return None
@@ -48,6 +50,8 @@ def getTourismStatsService(nat_cd, ed_cd, nStartYear, nEndYear):
 	natName = ''
 	dataEND = "{0}{1:0>2}".format(str(nEndYear), str(12))  # 데이터 끝 초기화
 	isDataEnd = 0  # 데이터 끝 확인용 flag 초기화
+	ed = None
+	
 	
 	for year in range(nStartYear, nEndYear + 1):
 		for month in range(1, 13):
@@ -55,8 +59,6 @@ def getTourismStatsService(nat_cd, ed_cd, nStartYear, nEndYear):
 				break  # 데이터 끝 flag 설정되어있으면 작업 중지.
 			yyyymm = "{0}{1:0>2}".format(str(year), str(month))
 			jsonData = getTourismStatsItem(yyyymm, nat_cd, ed_cd)  # [CODE 2]
-			
-			print(jsonData)
 			
 			if jsonData['response']['header']['resultMsg'] == 'OK':
 				# 입력된 범위까지 수집하지 않았지만, 더이상 제공되는 데이터가 없는 마지막 항목인 경우 -------------------
@@ -77,7 +79,7 @@ def getTourismStatsService(nat_cd, ed_cd, nStartYear, nEndYear):
 				jsonResult.append({'nat_name': natName, 'nat_cd': nat_cd, 'yyyymm': yyyymm, 'visit_cnt': num})
 				result.append([natName, nat_cd, yyyymm, num])
 	
-	return (jsonResult, result, natName, ed, dataEND)
+	return jsonResult, result, natName, ed, dataEND
 
 
 # [CODE 0]
@@ -92,6 +94,8 @@ def main():
 	ed_cd = "E"  # E : 방한외래관광객, D : 해외 출국
 	
 	jsonResult, result, natName, ed, dataEND = getTourismStatsService(nat_cd, ed_cd, nStartYear, nEndYear)  # [CODE 3]
+	
+	print(jsonResult, result, natName, ed, dataEND, sep='\n')
 	
 	if natName == '':  # URL 요청은 성공하였지만, 데이터 제공이 안된 경우
 		print('데이터가 전달되지 않았습니다. 공공데이터포털의 서비스 상태를 확인하기 바랍니다.')
