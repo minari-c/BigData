@@ -1,11 +1,10 @@
-#
-# 5.아래의 code에서 정의 되는 adf, bdf에서
-# 1) x1 열을 기준으로 adf, bdf의 교집합을 병합하고 print
-# 2) x1 열을 기준으로 adf, bdf의 합집합을 병합하고 print
-# 3) x1 열을 기준으로 왼쪽 데이터 프레임(adf)을 기준으로 병합하고 print
-# 4) x1 열을 기준으로 오른쪽 데이터 프레임(bdf)을 기준으로 병합하고 print
-# 하는 code를 작성하시오
-
+'''
+5.아래의 code에서 정의 되는 adf, bdf에서
+1) x1 열을 기준으로 adf, bdf의 교집합을 병합하고 print
+2) x1 열을 기준으로 adf, bdf의 합집합을 병합하고 print
+3) x1 열을 기준으로 왼쪽 데이터 프레임(adf)을 기준으로 병합하고 print
+4) x1 열을 기준으로 오른쪽 데이터 프레임(bdf)을 기준으로 병합하고 print하는 code를 작성하시오
+'''
 import pandas as pd
 
 # 실습을 위한 데이터 프레임 만들기 1

@@ -1,7 +1,8 @@
-# 아래의 code에서 정의 되는 df1, df2, df3에서
-# 1) df1과 df2를 위 아래로 연결하고 새로운 인덱스를 설정하여 print 히고
-# 2) df1과 df3를 좌 우로 연결 하고 print하는
-# code를 작성 하시오
+'''
+아래의 code에서 정의 되는 df1, df2, df3에서
+1) df1과 df2를 위 아래로 연결하고 새로운 인덱스를 설정하여 print 히고
+2) df1과 df3를 좌 우로 연결 하고 print하는 code를 작성 하시오
+'''
 import pandas as pd
 
 # 데이터 프레임 1

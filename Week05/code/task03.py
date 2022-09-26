@@ -1,6 +1,8 @@
-# titanic 데이터에서
-# 1) age 열이 25세 이상이고 남성인 행만 구하고
-# 2) 이중 앞의 5행만 print하는 하는 code를 작성 하시오
+'''
+titanic 데이터에서
+1) age 열이 25세 이상이고 남성인 행만 구하고
+2) 이중 앞의 5행만 print하는 하는 code를 작성 하시오
+'''
 import pandas as pd
 import seaborn as sns
 
