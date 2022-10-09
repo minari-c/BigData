@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
 from wordcloud import WordCloud
 
-inputFileName = '../task/task-1'
+inputFileName = '../json/task-1'
 data = json.loads(open(inputFileName + '.json', 'r', encoding='utf-8').read())
 print(f'data: {data}')
 
@@ -40,19 +40,17 @@ print(f'count: {count}')  # 출력하여 내용 확인
 
 word_count = dict()
 
-for tag, counts in count.most_common(80):
-	if (len(str(tag)) > 1):
+for tag, counts in count.most_common(80)[2:-1]:
+	if len(str(tag)) > 1:
 		word_count[tag] = counts
 		print("%s : %d" % (tag, counts))
 
-
-
-
 font_path = '../font/d2coding.ttc'
-fontprop = fm.FontProperties(fname=font_path, size=18)
+fontprop = fm.FontProperties(fname=font_path, size=15)
 # matplotlib.rc('font', family=font_name)
 # fm._rebuild()
 
+plt.rc('font', family=fontprop.get_name())
 
 plt.figure(figsize=(12, 5))
 plt.xlabel('키워드')
@@ -63,7 +61,7 @@ sorted_Keys = sorted(word_count, key=word_count.get, reverse=True)
 sorted_Values = sorted(word_count.values(), reverse=True)
 
 plt.bar(range(len(word_count)), sorted_Values, align='center')
-plt.xticks(range(len(word_count)), list(sorted_Keys), rotation='75')
+plt.xticks(range(len(word_count)), list(sorted_Keys), rotation='90')
 
 plt.show()
 
@@ -75,5 +73,5 @@ plt.imshow(cloud)
 plt.axis('off')
 plt.show()
 
-cloud.to_file('Task-4.jpg')
+cloud.to_file('Task-04.jpg')
 
