@@ -13,7 +13,7 @@ df = pd.DataFrame({
     'c2': [2, 1, 2, 1, 2],
     'c3': [1, 1, 2, 2, 2]
 })
-df1 = df.drop_duplicates()
+df1 = df.duplicated()
 print(df1)
 
 df2 = df[['c1', 'c3']].drop_duplicates()
