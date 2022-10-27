@@ -13,10 +13,20 @@ X = df.iloc[:,0:8]
 y = df.iloc[:,8]
 
 params = {
-	'kernel': ['linear', 'poly', 'rbf', 'sigmoid']
+	'n_estimators': range(1, 100, 1)
+    , 'learning_rate': np.arange(0.01, 0.05, 0.01)
 }
 '''
-{'linear', 'poly', 'rbf', 'sigmoid', 'precomputed'}
+n_estimators : int, default=50
+        The maximum number of estimators at which boosting is terminated.
+        In case of perfect fit, the learning procedure is stopped early.
+        Values must be in the range `[1, inf)`.
+
+    learning_rate : float, default=1.0
+        Weight applied to each classifier at each boosting iteration. A higher
+        learning rate increases the contribution of each classifier. There is
+        a trade-off between the `learning_rate` and `n_estimators` parameters.
+        Values must be in the range `(0.0, inf)`.
 '''
 
 gs = GridSearchCV(SVR(), params, n_jobs=-1)
@@ -24,8 +34,5 @@ gs.fit(X, y)
 print(gs.best_params_)
 print(gs.best_score_)
 
-cscore = cross_val_score(gs, X, y, cv=5)  # 교차 검증 k=5
-print('accuracy: ',cscore.mean())
-
-
-
+cscore = cross_val_score(gs,X,y,cv=5)  # 교차 검증 k=5
+print('accuracy',cscore.mean())
