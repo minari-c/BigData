@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import GridSearchCV
-from lightgbm import LGBMClassifier
+from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import cross_val_score
 
 # 피마 인디언 당뇨병 데이터셋을 불러옵니다.
@@ -19,7 +19,7 @@ y = df.iloc[:,8]
 # 	, 'verbose': [ -1 ]
 # }
 
-lgb = LGBMClassifier(learning_rate=0.04, min_child_samples=21, n_estimators=61)
+lgb = LinearRegression()
 lgb.fit(X, y)
 # gs = GridSearchCV(LGBMClassifier(random_state=42,), params, n_jobs=-1)
 # gs.fit(X, y)
