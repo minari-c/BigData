@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import AdaBoostClassifier
+from lightgbm import LGBMClassifier
 from sklearn.model_selection import cross_val_score
 
 # 피마 인디언 당뇨병 데이터셋을 불러옵니다.
@@ -13,13 +13,19 @@ X = df.iloc[:,0:8]
 y = df.iloc[:,8]
 
 # params = {
-# 	'n_estimators': range(1, 100, 1)
+# 	'n_estimators': range(1, 100, 2)
 #     , 'learning_rate': np.arange(0.01, 0.05, 0.01)
+# 	, 'min_child_samples': range(20, 30, 1)
+# 	, 'verbose': [ -1 ]
 # }
 
-ada = AdaBoostClassifier(learning_rate=0.04, n_estimators=80)
-ada.fit(X, y)
+lgb = LGBMClassifier(learning_rate=0.04, min_child_samples=21, n_estimators=61)
+lgb.fit(X, y)
+# gs = GridSearchCV(LGBMClassifier(random_state=42,), params, n_jobs=-1)
+# gs.fit(X, y)
+# print(gs.best_params_)
+# print(gs.best_score_)
 
-cscore = cross_val_score(ada, X, y, cv=5, scoring="neg_mean_squared_error")  # 교차 검증 k=5
+cscore = cross_val_score(lgb, X, y, cv=5)  # 교차 검증 k=5
 # print('accuracy', cscore.mean())
-print('rmse: ', np.mean(np.sqrt(-1 * cscore)))
+print('rmse: ', np.mean(np.sqrt(cscore)))

@@ -1,8 +1,6 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split, cross_val_score, StratifiedKFold
-from matplotlib import pyplot
+from sklearn.model_selection import cross_val_score
 
 # 피마 인디언 당뇨병 데이터셋을 불러옵니다.
 df = pd.read_csv('../csv/pima-indians-diabetes3.csv')
