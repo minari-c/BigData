@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/python_code/csv/Task-3.csv" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/python_code/task/미국_방한외래관광객_2019_202112.csv" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/week02/code/미국_방한외래관광객_2019_202112.csv" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/week02/csv/Task-3.csv" charset="x-windows-949" />
   </component>
 </project>
