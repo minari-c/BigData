@@ -45,7 +45,7 @@ for tag, counts in count.most_common(80)[2:-1]:
 		word_count[tag] = counts
 		print("%s : %d" % (tag, counts))
 
-font_path = '../font/d2coding.ttc'
+font_path = '../../font/d2coding.ttc'
 fontprop = fm.FontProperties(fname=font_path, size=15)
 # matplotlib.rc('font', family=font_name)
 # fm._rebuild()
