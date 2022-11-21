@@ -4,7 +4,7 @@ import webbrowser as web
 import os
 
 abs_cur_path = os.getcwd()
-dir_path = f'{os.path.abspath("..\html\\")}\\'
+dir_path = f'{os.path.abspath("../html/")}\\'
 file_name = 'output'
 file_extension = '.html'
 
