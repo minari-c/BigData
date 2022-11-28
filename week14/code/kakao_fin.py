@@ -53,11 +53,11 @@ model = Sequential()
 
 '''one RNN'''
 # model.add(
-#   SimpleRNN(
-# 	    16
-#   	, input_shape=(X_train.shape[1], 1)
-# 	    , activation='tanh'
-#   )
+# 	SimpleRNN(
+# 		16
+# 		, activation='tanh'
+# 		, input_shape=(X_train.shape[1], 1)
+# 	)
 # )
 
 '''two RNN'''
@@ -68,6 +68,7 @@ model.add(
 		, input_shape=(X_train.shape[1], 1)
 	)
 )
+model.add(SimpleRNN(20))
 
 model.add(Dense(1))
 
