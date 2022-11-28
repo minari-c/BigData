@@ -41,12 +41,31 @@ X_train, y_train = make_sample(train_data, WINDOW_SIZE)
 
 model = Sequential()
 
+'''LSTM'''
+# model.add(
+# 	LSTM(
+# 		16
+# 		, input_shape=(X_train.shape[1], 1)
+# 		, activation='tanh'
+# 		, return_sequences=False
+# 	)
+# )
+
+'''one RNN'''
+# model.add(
+#   SimpleRNN(
+# 	    16
+#   	, input_shape=(X_train.shape[1], 1)
+# 	    , activation='tanh'
+#   )
+# )
+
+'''two RNN'''
 model.add(
-	LSTM(
+	SimpleRNN(
 		16
-		, input_shape=(X_train.shape[1], 1)
 		, activation='tanh'
-		, return_sequences=False
+		, input_shape=(X_train.shape[1], 1)
 	)
 )
 
