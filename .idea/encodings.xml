@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/week02/code/미국_방한외래관광객_2019_202112.csv" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/week02/csv/Task-3.csv" charset="x-windows-949" />
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8" addBOMForNewFiles="with BOM">
+    <file url="file://$PROJECT_DIR$/week02/code/미국_방한외래관광객_2019_202112.csv" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/week02/csv/Task-3.csv" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/week12/csv/seoul_population.csv" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/week12/csv/서울특별시 성북구_약국list.csv" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/week12/json/서울행정구역경계.json" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

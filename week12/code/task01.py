@@ -18,19 +18,19 @@ df = pd.read_csv('../csv/인천광역시 미추홀구_재래시장_20220822.csv'
 print(df)
 # 지도 만들기
 
-seoul_map = folium.Map(
-	location=[37.2658, 126.3926]
+incheon_map = folium.Map(
+	location=[37.449394, 126.657354]
 	, tiles='Stamen Terrain'
-	, zoom_start=15
+	, zoom_start=14
 )
 
+# marking
 for name, lat, lng in zip(df.시장명, df.위도, df.경도):
-	folium.Marker([lat, lng], popup=name).add_to(seoul_map)
+	folium.Marker([lat, lng], popup=name).add_to(incheon_map)
 
 output_path = f'{dir_path}{file_name}_{file_count}{file_extension}'
 
-print(output_path)
-seoul_map.save(outfile=output_path)
+incheon_map.save(outfile=output_path)
 
 web.open(f'{output_path}')
 web.get('chrome').open(output_path)
