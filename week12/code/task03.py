@@ -8,7 +8,10 @@ import json
 
 df = pd.read_csv('../csv/seoul_population.csv', encoding='utf-8')
 
-seoul_geo = '../json/서울행정구역경계.json'
+
+seoul_geo_file = open('../json/서울행정구역경계.json', 'r', encoding='utf-8')
+seoul_geo = json.load(seoul_geo_file)
+seoul_geo_file.close()
 
 abs_cur_path = os.getcwd()
 dir_path = f'{os.path.abspath("../html/")}\\'
@@ -39,3 +42,4 @@ seoul_map.save(outfile=output_path)
 
 web.open(f'{output_path}')
 web.get('chrome').open(output_path)
+
