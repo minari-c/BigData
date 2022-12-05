@@ -16,9 +16,9 @@ file_count = len(os.listdir(dir_path))
 output_path = f'{dir_path}{file_name}_{file_count}{file_extension}'
 
 seoul_map = folium.Map(
-	location=[37.61891151, 127.0552709]
+	location=[37.56891151, 127.0052709]
 	, tiles='Stamen Toner'
-	, zoom_start=9
+	, zoom_start=10
 )
 
 folium.Choropleth(
