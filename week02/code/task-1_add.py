@@ -8,7 +8,7 @@ import json
 client_id = 'EjbHjpgKv0gwN1C05qn6'
 client_secret = 'FDtN2OazP7'
 
-encText = urllib.parse.quote('태풍')
+encText = urllib.parse.quote('손흥민')
 url = "https://openapi.naver.com/v1/search/blog?query=" + encText  # json 결과
 # url = "https://openapi.naver.com/v1/search/blog.xml?query=" + encText     # xml 결과
 
