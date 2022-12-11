@@ -3,7 +3,7 @@
 # conda install -c anaconda openpyxl
 
 import os
-from multiprocessing import Pool, TimeoutError, freeze_support
+from multiprocessing import Pool, freeze_support
 
 
 def foo(file_info):
@@ -17,7 +17,6 @@ xlsx_path_infos = list()
 
 file_names = os.listdir(folder_path)
 for year in file_names:
-    # print(os.listdir(f'{folder_path}{year}'))
     for file_name in os.listdir(f'{folder_path}{year}'):
         xlsx_path_infos.append([folder_path, f'{year}/', file_name[:file_name.find('.')]])
 
