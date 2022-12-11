@@ -7,7 +7,7 @@ from multiprocessing import Pool, TimeoutError, freeze_support
 
 
 def foo(file_info):
-    xlsx = pd.read_excel(f'{file_info[0]}{file_info[1]}{file_info[2]}')
+    xlsx = pd.read_excel(f'{file_info[0]}{file_info[1]}{file_info[2]}.xlsx')
     xlsx.to_csv(f'../csv/{file_info[1]}{file_info[2]}.csv')
 
 
